@@ -1,0 +1,172 @@
+// PLUS MINUS
+class Result {
+public static void plusMinus(List<Integer> arr) {
+        float c1=0;
+        float c2=0;
+        float c3=0;
+        int n=arr.size();
+     for(int i=0;i<n;i++){
+         if(arr.get(i)<0){
+             c1++;
+         }
+         else if(arr.get(i)>0){
+             c2++;
+         }
+         else{
+             c3++;
+         }
+     }
+     
+     c1/=n;
+     c2/=n;
+     c3/=n;
+     System.out.println(c2);
+     System.out.println(c1);
+     System.out.println(c3);
+    }
+
+}
+
+//MINI-MAX SUM
+class Result {
+public static void miniMaxSum(List<Integer> arr) {
+        long min = 0;
+        long max=0;
+        Collections.sort(arr);
+      for(int i=0;i<4;i++){
+          min+=arr.get(i);
+      }
+      for(int j=1;j<5;j++){
+          max+=arr.get(j);
+      }
+    System.out.println(min+" "+max);
+    }
+
+}
+
+//TIME CONVERSION
+class Result {
+public static String timeConversion(String s) {
+        
+        String str = "";
+        if(s.substring(8,10).equals("AM")){
+            if(s.substring(0,2).equals("12")){
+               
+                str="00"+s.substring(2,8);
+            }
+            else{
+                str = s.substring(0,8);
+            }
+        }
+        else{
+            if(s.substring(0,2).equals("12")){
+                str = s.substring(0,8);
+            }
+            else{
+                int hh = Integer.parseInt(s.substring(0,2));
+                hh = hh+12;
+                str = Integer.toString(hh);
+                str=str+s.substring(2,8);
+            }
+        }
+        return str;
+    }
+   
+}
+
+//SPARSE ARRAYS
+class Result {
+public static List<Integer> matchingStrings(List<String> strings, List<String> queries) {
+       Map<String,Integer> map = new HashMap<String,Integer>();
+       List<Integer> a = new ArrayList<>();
+       int n = strings.size();
+       int m = queries.size();
+       for(int i = 0;i<n;i++){
+           
+           String s = strings.get(i);
+           if(map.containsKey(s)){
+               map.put(s,map.get(s)+1);
+           }
+           else{
+               map.put(s,1);
+           }
+       }
+       for(int i = 0;i<m;i++){
+           String st = queries.get(i);
+           if(map.containsKey(st)){
+               a.add(map.get(st));
+           }
+           else{
+               a.add(0);
+           }
+       }
+       return a;
+
+    }
+
+}
+
+//LONELY INTEGER
+class Result {
+public static int lonelyinteger(List<Integer> a) {
+      for(int i=0;i<a.size();i++){
+         int c = Collections.frequency(a,a.get(i));
+          if(c==1){
+              return a.get(i);
+          }
+      }
+      return 0;
+
+    }
+
+}
+
+//DIAGONAL DIFFERENCE
+class Result {
+public static int diagonalDifference(List<List<Integer>> arr) {
+      int a=0;
+      int b=0;
+      for(int i=0;i<arr.size();i++){
+          for(int j=0;j<arr.size();j++){
+              if(i==j){
+                  a=a+arr.get(i).get(j);
+              }
+              if((i + j) == (arr.size() - 1)){
+                    b += arr.get(i).get(j);
+                }
+          }
+      }
+      return Math.abs(a-b);
+
+    }
+
+}
+
+//COUNTING SORT 1
+class Result {
+public static List<Integer> countingSort(List<Integer> arr) {
+        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+      List<Integer> a = new ArrayList<>();
+      Collections.sort(arr);
+      int max = arr.get(arr.size()-1);
+      for(int j=0;j<arr.size();j++){
+          int s = arr.get(j);
+          if(map.containsKey(s)){
+              map.put(s,map.get(s)+1);
+          }
+          else{
+              map.put(s,1);
+          }
+      }
+      for(int k=0;k<100;k++){
+          if(map.containsKey(k)){
+              a.add(map.get(k));
+          }
+          else{
+              a.add(0);
+          }
+      }
+      return a;
+    }
+
+}
