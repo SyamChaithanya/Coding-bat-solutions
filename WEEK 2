@@ -1,0 +1,75 @@
+//Sales by Match
+class Result{
+public static int sockMerchant(int n, List<Integer> ar) {
+      Map<Integer,Integer> map = new HashMap<>();
+      int a=0;
+      for(int i=0;i<ar.size();i++){
+          if(map.containsKey(ar.get(i))){
+              map.put(ar.get(i),map.get(ar.get(i))+1);
+          }
+          else{
+              map.put(ar.get(i),1);
+          }
+      }
+      for(int i=0;i<101;i++){
+          if(map.containsKey(i)){
+                 a =a + map.get(i)/2; 
+                }
+                
+      }
+      return a;
+
+    }
+
+}
+
+//Zig Zag Sequence
+class Result{
+public static void findZigZagSequence(int [] a, int n){
+        Arrays.sort(a);
+        int mid = n/2;
+        int temp = a[mid];
+        a[mid] = a[n - 1];
+        a[n - 1] = temp;
+    
+        int st = mid + 1;
+        int ed = n - 2;
+        while(st <= ed){
+            temp = a[st];
+            a[st] = a[ed];
+            a[ed] = temp;
+            st = st + 1;
+            ed = ed - 1;
+        }
+        for(int i = 0; i < n; i++){
+            if(i > 0) System.out.print(" ");
+            System.out.print(a[i]);
+        }
+        System.out.println();
+    }
+}
+
+//Drawing Book
+class Result{
+public static int pageCount(int n, int p) {
+        int a;
+        if(n%2!=0){
+     if(p<=n/2){
+          a = p/2;
+     }
+     else{
+         a=(n-p)/2;
+     }
+        }
+        else{
+            if(p<=n/2){
+          a = p/2;
+     }
+     else{
+         a=(n-p+1)/2;     }
+        }
+     return a;
+
+    }
+
+}
