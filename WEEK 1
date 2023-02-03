@@ -170,3 +170,77 @@ public static List<Integer> countingSort(List<Integer> arr) {
     }
 
 }
+
+//Flipping Bits
+class Result {
+public static long flippingBits(long n) {
+        String st = "";
+      String s = Long.toBinaryString(n);
+      int a=s.length();
+      for(int i=0;i<32-a;i++){
+          st+="0";
+      }
+      st=st+s;
+      
+      String str = "";
+      for(int i=0; i<32; i++){
+          if (st.charAt(i) == '1'){
+              str += "0";
+          }
+          else{
+              str += "1";
+          }
+      }
+      
+      Long l = Long.parseLong(str,2);
+      
+         
+      return l;
+    }
+
+}
+
+//Pangrams
+class Result {
+public static String pangrams(String s) {
+        Set<Character> set = new TreeSet<>();
+      s=s.replaceAll(" ","");
+      s=s.toLowerCase();
+      for(int i =0;i<s.length();i++){
+          set.add(s.charAt(i));
+      }
+      if(set.size()==26){
+          return "pangram";
+      }
+      else{
+          return "not pangram";
+      }
+     
+
+    }
+
+}
+
+//Permuting Two Arrays
+class Result {
+public static String twoArrays(int k, List<Integer> A, List<Integer> B) {
+        int n = A.size();
+        int count = 0;
+        Collections.sort(A);
+        Collections.sort(B,Collections.reverseOrder());
+      for(int i=0;i<n;i++){
+              if(A.get(i)+B.get(i)>=k){
+                  count++;
+              }
+              else{
+                  return "NO";
+              }
+          }
+          if(count == n){
+              return "YES";
+          }
+          return "";
+
+    }
+
+}
