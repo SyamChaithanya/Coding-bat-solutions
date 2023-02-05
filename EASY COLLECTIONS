@@ -1,0 +1,171 @@
+//Grading Students
+class Result{
+ public static List<Integer> gradingStudents(List<Integer> grades) {
+      List<Integer> l = new ArrayList<>();
+        int n = grades.size();
+      for(int i=0;i<n;i++){
+          int a = grades.get(i);
+          if(a<38){
+              l.add(a);
+          }
+          else{
+              int b = a%5;
+              b=5-b;
+              int c = a+b;
+              if(c-a<3){
+                  l.add(c);
+              }
+              else{
+                  l.add(a);
+              }
+          }
+      }
+        return l;
+    }
+}
+
+
+//Remove Duplicates 12
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Set<Character> set = new LinkedHashSet<>();
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int n = s.length();
+        for(int i=0;i<n;i++){
+            set.add(s.charAt(i));
+        }
+        Iterator i = set.iterator();
+while (i.hasNext()) {
+   System.out.print(i.next());
+}
+    }
+}
+
+
+//Java HashSet
+public class Solution {
+
+ public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int t = s.nextInt();
+        String [] pair_left = new String[t];
+        String [] pair_right = new String[t];
+        
+        for (int i = 0; i < t; i++) {
+            pair_left[i] = s.next();
+            pair_right[i] = s.next();
+        }
+        Set<String> pairs = new HashSet<String>();
+for(int i = 0; i < t; i++)
+    {
+        pairs.add("(" + pair_left[i] + ", " + pair_right[i] + ")" );
+        System.out.println(pairs.size());        
+    }
+    
+    
+//Apple and Orange
+class Result{
+ public static void countApplesAndOranges(int s, int t, int a, int b, List<Integer> apples, List<Integer> oranges) {
+        int n = apples.size();
+        int m = oranges.size();
+        int count = 0;
+        int cou = 0;
+      for(int i=0;i<n;i++){
+          int c = a+apples.get(i);
+          if(c>=s && c<=t){
+              count++;
+          }
+      }
+        System.out.println(count);
+        for(int j=0;j<m;j++){
+            int d = b+oranges.get(j);
+            if(d<=t && d>=s){
+                cou++;
+            }
+        }
+        System.out.println(cou);
+    }
+}
+
+
+//Java Map
+import java.util.*;
+import java.io.*;
+
+class Solution{
+    public static void main(String []argh)
+    {
+        Map<String,Integer> map = new HashMap<>();
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        sc.nextLine();
+        for(int i=0;i<n;i++)
+        {
+            String name=sc.nextLine();
+            int phone=sc.nextInt();
+            map.put(name,phone);
+            sc.nextLine();
+           
+        }
+        while(sc.hasNext())
+        {
+            String s=sc.nextLine();
+            System.out.println(map.containsKey(s)?s+"="+map.get(s):"Not found");
+        }
+    }
+}
+
+
+//Sales by Match
+class Result{
+public static int sockMerchant(int n, List<Integer> ar) {
+    Map<Integer,Integer> map = new HashMap<>();
+      int a=0;
+      for(int i=0;i<ar.size();i++){
+          if(map.containsKey(ar.get(i))){
+              map.put(ar.get(i),map.get(ar.get(i))+1);
+          }
+          else{
+              map.put(ar.get(i),1);
+          }
+      }
+      for(int i=0;i<101;i++){
+          if(map.containsKey(i)){
+                 a =a + map.get(i)/2; 
+                } 
+      }
+      return a;
+    }
+}
+
+
+//Breaking the Records 
+class Result{
+public static List<Integer> breakingRecords(List<Integer> scores) {
+     List<Integer> l = new ArrayList<>();
+        int n = scores.size();
+        int min = 0;
+        int max = 0;
+        int h = scores.get(0);
+        int lo = scores.get(0);
+        for(int i=1;i<n;i++){
+            int a = scores.get(i);
+            if(a>h){
+                h=a;
+                max++;
+            }
+            if(a<lo){
+                lo = a;
+                min++;
+            }
+        }
+        l.add(max);
+        l.add(min);
+        return l;
+    }
+}
