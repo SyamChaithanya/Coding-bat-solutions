@@ -1,0 +1,311 @@
+//Student Normal
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+ 
+class Student {
+    private String name;
+    private int rollNo;
+    private String branch;
+    private int year;
+    private List<Integer> marks;
+    private static int noOfStudents;
+    
+    public Student(String n, int rollNo, String branch, int year){
+        this.name = n;
+        this.rollNo = rollNo;
+        this.branch = branch;
+        this.year = year;
+        marks = new ArrayList<>();
+        noOfStudents++;
+    }
+
+    public String getName(){
+        return name; 
+    }
+    public int getRollNo(){
+        return rollNo; 
+    }
+    public String getBranch(){
+        return branch; 
+    }
+    public int getYear(){
+        return year; 
+    }
+    public List<Integer> getMarks(){
+        return marks; 
+    }
+    public void setMarks(int obtainedMark){
+        marks.add(obtainedMark);
+    }
+    public void display(){
+        System.out.println(rollNo+" "+name+" "+branch+" "+year);
+    }
+    public double computePercentage(){
+        double sum = 0;
+        for(Integer mark:marks){
+            sum = sum + mark;
+        }
+        if(marks.size()==0)
+            return 0;
+        return sum/marks.size();
+    }
+    public static void displayNoStuds(){
+        System.out.println("NoOfStudents="+noOfStudents);
+    }
+    
+}
+ 
+public class Solution {
+ 
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = Integer.parseInt(in.nextLine());
+        List<Student> students = new ArrayList<>();
+        for(int i=0;i<n;i++){
+            String [] line = in.nextLine().split(" ");
+            Student s = new Student(line[0],Integer.parseInt(line[1]),line[2],Integer.parseInt(line[3]));
+            students.add(s);
+            Student sg = students.get(i);
+            String [] nums = in.nextLine().split(" ");
+            for(int j = 0;j<nums.length;j++){
+                sg.setMarks(Integer.parseInt(nums[j]));
+            }
+        }
+        for(int i=0;i<n;i++){
+            Student sg = students.get(i);
+            sg.display();
+            System.out.print(sg.getRollNo()+" ");
+            System.out.printf("%.2f",sg.computePercentage());
+            System.out.println();
+        }
+        Student.displayNoStuds();  
+    }
+}
+
+//Bank Account
+import java.io.*;
+import java.util.*;
+
+class Bank{
+    String name;
+    int accno;
+    int balnc;
+    public Bank(String name){
+            this.name = name;
+            this.balnc=0;
+    }
+    public void deposit(int k){
+        balnc += k;
+    }
+    public void withdraw(int j){
+        if(balnc<j)
+            System.out.println("Negative Balance Transaction Cancelled");
+        else
+         balnc-=j;
+    }
+    public void display(){
+        System.out.println(accno+" "+name+" "+balnc);
+    }
+    public void setAccno(int bit){
+        this.accno=bit;
+    }
+}
+public class Solution{
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int num = Integer.parseInt(scan.nextLine());
+        String nam = scan.nextLine();
+        Bank s1 = new Bank(nam);
+        s1.setAccno(num);
+        int n = Integer.parseInt(scan.nextLine());
+        for(int i =0;i<n;i++){
+            String[] arr = scan.nextLine().split(" ");
+            if(arr[0].equals("Deposit")){
+                s1.deposit(Integer.parseInt(arr[1]));
+            }
+            else if(arr[0].equals("Withdraw")){
+                s1.withdraw(Integer.parseInt(arr[1]));
+            }
+            else if(arr[0].equals("Display")){
+                s1.display();
+            }
+        }
+        
+    }
+}
+
+//Class and Object 9 
+import java.io.*;
+import java.util.*;
+
+class Person {
+    int age;
+    
+    Person(int age) {
+        this.age = age;
+        if (this.age < 0) {
+            this.age = 0;
+        }
+    }
+    public void yearPasses() {
+        age = age + 1;
+    }
+    public void amIOld() {
+        if (age >0 &&age<13) {
+            System.out.println("You are young.");
+        }
+        else if (age >= 13 && age < 18) {
+            System.out.println("You are a teenager.");
+        }
+        else if (age==0) {
+            System.out.println("Age is not valid, setting age to 0.");
+            System.out.println("You are young.");
+        }
+        else  {
+           System.out.println("You are old."); 
+        }
+    }
+}
+
+public class Solution {
+
+   public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int i = 0; i < T; i++) {
+            int age = sc.nextInt();
+            Person p = new Person(age);
+            p.amIOld();
+            for (int j = 0; j < 3; j++) {
+                p.yearPasses();
+            }
+            p.amIOld();
+            System.out.println();
+        }
+        sc.close();
+    }
+}
+
+//Dog Inheritance 1
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Dog {
+    private String name;
+    public Dog(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+}
+class Greyhound extends Dog {
+    private String color;
+    private int weight;
+    Greyhound(String name, String color, int weight) {
+        super(name);
+        this.color = color;
+        this.weight = weight;
+    }
+    public String getColor() {
+        return color;
+    }
+    public int getWeight() {
+        return weight;
+    }
+}
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String name = in.nextLine();
+        String color = in.nextLine();
+        int weight = in.nextInt();
+        Greyhound pup = new Greyhound(name, color, weight);
+        System.out.println(pup.getName());
+        System.out.println(pup.getColor());
+        System.out.println(pup.getWeight());
+        System.out.println(pup.getName() + " is " + pup.getColor() + " in color and his weight is " + pup.getWeight() + "Kg" );
+        System.out.println("Superclass:"+pup.getClass().getSuperclass().getName());
+    }
+}
+
+//Inheritance Person
+import java.io.*;
+import java.util.*;
+class parent{
+    protected String fname;
+    protected String lname;
+    protected  int avg;
+    public String getFname( String fname){
+        return fname;
+    }
+        public String getLname( String lname){
+        return lname;
+    }
+}
+class student extends parent{
+    private int id;
+     
+    public int sum = 0;
+    
+    public int count=0;
+ 
+   public student( String fname,String lname,int id){ 
+       super.fname=fname;
+       super.lname=lname;
+       this.id = id;
+   }
+    public void caluculate(int av){
+      
+       if((av>=90)&&(av<=100)){
+           System.out.println("Grade: O");
+       }
+      else if((av>=80)&&(av<90)){
+           System.out.println("Grade: E");
+       }
+       else if((av>=70)&&(av<80)){
+           System.out.println("Grade: A");
+       }
+      else if((av>=55)&&(av<70)){
+           System.out.println("Grade: P");
+          }
+       else if((av>=40)&&(av<55)){
+           System.out.println("Grade: D");
+       }
+       else{
+           System.out.println("Grade: T");
+       }
+   }
+    public void show2(){
+        System.out.println("Name: "+lname+","+" "+fname);
+        System.out.println("ID: "+id);
+   }
+}   
+public class Solution {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String[] array =  in.nextLine().split(" ");
+        String fname=array[0];
+        String lname=array[1];
+        int id= Integer.parseInt(array[2]);
+        int b = in.nextInt();
+        in.nextLine();
+         student obj = new student(fname,lname,id);
+        int sum =0;
+        for (int i =0;i<b;i++){
+            int c = Integer.parseInt(in.next());
+             sum = sum +c;
+        }
+        int  avg = sum/b;
+        obj.show2();
+        obj.caluculate(avg);
+    }
+}
