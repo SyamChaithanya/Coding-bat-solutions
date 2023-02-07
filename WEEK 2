@@ -75,6 +75,7 @@ public static int pageCount(int n, int p) {
 }
 
 //Min-Max
+class Result{
 public static int maxMin(int k, List<Integer> arr) {
 
       Collections.sort(arr);
