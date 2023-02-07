@@ -1,0 +1,167 @@
+//Custom Integer List
+import java.io.*;
+import java.util.*;
+class IntegerList{
+   private int[] list;
+   private int index;
+   public int si;
+   private int[] li;
+    public IntegerList(int size){
+        list = new int[size];
+        this.index=0;
+        this.si=size;
+        li = new int[si];
+    }
+   public void add(int num){
+       if(si>index){
+           li[index]=num;
+           index++;
+       }
+        else{
+           System.out.println("can't add, list is full");
+       }
+   }
+    public void display(){
+           for(int i =0;i<this.si;i++){
+               System.out.println(i+ " : "+li[i]);
+           }
+       }
+}
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int capacity = Integer.parseInt(in.nextLine());
+        IntegerList nums = new IntegerList(capacity);
+        while(in.hasNextLine()){
+            int num = Integer.parseInt(in.nextLine());
+            nums.add(num);
+        }
+      nums.display();
+    }
+}
+
+//Shape Hirarchy Interfaces
+import java.io.*;
+import java.util.*;
+interface shape{
+    double area();
+    double perimeter();
+}
+class Rectangle implements shape{
+    protected int length;
+    protected int breath;
+    private double  area;
+    private double perimeter;
+     public Rectangle(int length ,int breath){    
+        this.length=length;
+        this.breath=breath;
+    }
+    public double getArea(double  area){
+        return area;
+    }
+    public double getPerimeter(double perimeter){
+        return perimeter;
+    }
+    public double area(){
+        area= length*breath;
+        return area;
+      
+    }
+      public double perimeter(){
+        perimeter= 2*(length+breath);
+          return perimeter;
+    }
+    public void show(){
+        System.out.print(area+"0 ");
+         System.out.println(perimeter+"0");
+    }
+}
+class Square implements shape{
+    protected int side;
+   double area;
+   double perimeter;
+     public  Square(int side){    
+        this.side=side;
+    }
+     public double getArea(double  area){
+        return area;
+    }
+    public double getPerimeter(double perimeter){
+        return perimeter;
+    }
+    public double area(){
+       area=  side*side;
+        return area;
+    }
+      public double perimeter(){
+        perimeter= 4*side;
+          return perimeter;
+    }
+      public void show(){
+        System.out.print(area+"0 ");
+         System.out.println(perimeter+"0");
+    }
+}
+class Circle  implements shape{
+    protected int radius;
+    double area;
+    double perimeter;
+     public Circle(int radius){    
+        this.radius=radius;
+    }
+     public double getArea(double  area){
+        return area;
+    }
+    public double getPerimeter(double perimeter){
+        return perimeter;
+    }
+    public double area(){
+        area= (22.0/7)*(radius*radius);
+        return area;
+    }
+      public double perimeter(){
+        perimeter=  2*(22.0/7)*radius;
+          return perimeter;
+    }
+     public void show(){
+        System.out.print(area+"0 ");
+         System.out.println(perimeter+"0");
+    }
+}
+
+public class Solution {
+
+    public static void main(String[] args) {
+         Scanner in = new Scanner(System.in);
+        int a = Integer.parseInt(in.nextLine());
+        for(int i=0;i<a;i++){
+            String[] array1= in.nextLine().split(" ");
+            String b = array1[0];
+            if(b.equals("R")){
+                int length = Integer.parseInt(array1[1]);
+                int breath= Integer.parseInt(array1[2]);
+                Rectangle obj = new Rectangle(length,breath);
+                obj.area();
+                obj.perimeter();
+                obj.show();
+            }
+             if(b.equals("S")){
+                int side = Integer.parseInt(array1[1]);
+                Square obj2 = new Square(side);
+                 obj2.area();
+                 obj2.perimeter();
+                 obj2.show();
+            }
+             if(b.equals("C")){
+                int radius = Integer.parseInt(array1[1]);
+                 Circle obj3 = new Circle(radius);
+                 obj3.area();
+                 obj3.perimeter();
+                 obj3.show();
+            }
+        }
+    }
+}
+
+//
