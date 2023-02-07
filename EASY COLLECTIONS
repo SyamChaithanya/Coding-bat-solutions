@@ -169,3 +169,28 @@ public static List<Integer> breakingRecords(List<Integer> scores) {
         return l;
     }
 }
+
+//Jesse and Cookies
+class Result{
+public static int cookies(int k, List<Integer> A) {
+        Collections.sort(A);
+        int count = 0;
+        
+      while(A.get(0)<k && A.size()>1){
+          int a = A.get(0)+2*A.get(1);
+          A.remove(A.get(0));
+          A.remove(A.get(1));
+          A.add(a);
+          Collections.sort(A);
+          count++;
+      }
+        if(A.get(0)>=k){
+            return count-1;
+        }
+        else{
+            return -1;
+        }
+
+    }
+
+}
