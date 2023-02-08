@@ -90,3 +90,44 @@ public static int maxMin(int k, List<Integer> arr) {
     }
 
 }
+
+//Ceaser Cipher
+class Result{
+public static String caesarCipher(String s, int k) {
+       String st = "";
+       int n = s.length();
+       for(int i=0;i<n;i++){
+           char ch = s.charAt(i);
+           int a = (int)ch;
+           if(k<26){
+               k=k+0;
+           }
+           else{
+               k=k%26;
+           }
+           if(a>96 && a<123){
+               if(a>122-k){
+                   a=((a+k)%122)+96;
+               }
+               else{
+                   a=a+k;
+               }
+           }
+           else if(a>64 && a<91){
+               if(a>90-k){
+                   a=((a+k)%90)+64;
+               }
+               else{
+                   a=a+k;
+               }
+           }
+           else{
+               a=a+0;
+           }
+         st=st+(char)a;  
+       }
+       return st;
+
+    }
+
+}
