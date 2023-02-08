@@ -244,3 +244,42 @@ public static String twoArrays(int k, List<Integer> A, List<Integer> B) {
     }
 
 }
+
+//Subarray Division 1
+class Result{
+public static int birthday(List<Integer> s, int d, int m) {
+        int result = 0;
+        int n = s.size();
+      for(int i = 0; i < n-m+1; i++){
+            int tmpSum = 0;
+            for(int j = i; j < i+m; j++){
+                tmpSum+= s.get(j);
+            } 
+            if(tmpSum == d){
+                result++;
+            }
+        }
+       return result;
+    }
+
+}
+
+//XOR Strings 2
+public class Solution {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String t = sc.nextLine();
+        int n = s.length();
+        String st = "";
+        for(int i = 0;i<n;i++){
+            if(s.charAt(i)==t.charAt(i)){
+                st = st+'0';
+            }
+            else{
+                st=st+'1';
+            }
+        }
+        System.out.println(st);
+    }
+}
