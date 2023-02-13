@@ -1,0 +1,172 @@
+//TCS6
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    
+    
+    public static int fab(int m){
+        if(m==1 || m==0){
+            return m;
+        }
+        else{
+           return fab(m-1) + fab(m-2);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if(n%2 != 0){
+            System.out.print(n);
+        }
+        else{
+            int k=n/2;
+            System.out.print(fab(k));
+            
+        }
+    }
+}
+
+//String Palindrome 4
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String str = s.toLowerCase();
+        StringBuilder sb = new StringBuilder(str);
+        sb.reverse();
+        String rev = sb.toString();
+        if(str.equals(rev)){
+            System.out.println("Palindrome");
+        }
+        else{
+            System.out.println("Not Palindrome");
+        }
+    }
+}
+
+//Super Reduced String
+class Result{
+public static String superReducedString(String s) {
+        boolean flag=false;
+        String opt =s;
+        int i =0;
+        while(true){
+            if(!s.equals("") && i!=s.length()-1){
+                String a = s.substring(i,i+1);
+                String b = s.substring(i+1,i+2);
+                if(a.equals(b)){
+                    opt=opt.replace(s.substring(i,i+2),"");
+                    flag=true; 
+                }
+                i++;
+            }
+            else if(i>=s.length()-1){
+                if(flag==false) break;
+                s=opt;
+                flag=false;
+                i=0;
+            }
+        }
+        if(opt.equals("")) return "Empty String";
+        else return opt;
+
+    }
+
+}
+
+//String reversal with same Special Symbol
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    public static String rev(String s){
+        StringBuffer sb = new StringBuffer(s);
+        sb.reverse();
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int n= s.length();
+        String res = s;
+        for(int i=0; i<n; i++){
+            char c = s.charAt(i);
+            if (!Character.isAlphabetic(c) && !Character.isDigit(c)){
+                res = res.replace(String.valueOf(s.charAt(i)), "");
+            }
+        }
+        String k = rev(res);
+        String p = "";
+        int j=0;
+        for(int i=0; i<n; i++){
+            char c = s.charAt(i);
+            if (!Character.isAlphabetic(c) && !Character.isDigit(c)){
+                p += s.substring(i,i+1);
+            }
+            else{
+                p += k.substring(j,j+1);
+                j++;
+            }
+        }
+        System.out.println(p);
+    }
+}
+
+//Form Largest even number
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        Set<Integer> set = new HashSet<>();
+        List<Integer> list = new ArrayList<>();
+        for(int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            if (Character.isDigit(c)){
+                set.add(Integer.parseInt(String.valueOf(c)));
+            }
+        }
+        for(int p: set){
+            list.add(p);
+        }
+        Collections.sort(list, Collections.reverseOrder());
+        String res  = "";
+        for(int i=0; i<list.size(); i++){
+            res += list.get(i);
+        }
+        int l = res.length();
+        int t=0,c=0;
+        for(int i=0; i<l; i++){
+            if (Integer.parseInt(res.substring(i,i+1)) % 2 == 0){
+                c++;
+            }
+        }
+        if (c!=0){
+            if (Integer.parseInt(res.substring(l-1,l)) % 2 != 0){
+                for(int i=l-1; i>=0; i--){
+                    if (Integer.parseInt(res.substring(i-1,i)) % 2 == 0){
+                        t=i;
+                        String ans = res.substring(t-1,t);
+                        res = res.replace(res.substring(t-1,t),"");
+                        res += ans;
+                        break;
+                    }
+                }
+            }
+            System.out.println(Long.parseLong(res));
+        }
+        else{
+            System.out.println(-1);
+        }
+    }
+}
