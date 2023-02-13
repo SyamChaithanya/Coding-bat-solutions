@@ -131,3 +131,50 @@ public static String caesarCipher(String s, int k) {
     }
 
 }
+
+//Recursive digit sum
+class Result{
+public static int superDigit(String n, int k) {
+         int temp = findSum(n) * k;
+        
+        if(temp>9){
+            temp = findSum(String.valueOf(temp));
+        }
+
+        return temp;
+    }
+    
+    static int findSum(String num){
+        if(num.length() == 1){
+            return Integer.parseInt(num);
+        }
+        
+        int sum =0;
+        for(int i=0; i<num.length(); i++){
+            sum += Integer.parseInt(String.valueOf(num.charAt(i)));
+        }
+        
+        return findSum(String.valueOf(sum));
+    }
+}
+
+//Sherlock and Arrays
+class Result{
+public static String balancedSums(List<Integer> arr) {
+        int n = arr.size();
+        int totalSum = 0;
+  int runningSum = 0;
+  for (int i = 0; i < n; i++) {
+    totalSum+= arr.get(i);
+  }
+
+  for (int i = 0; i < n; i++) {
+    totalSum-= arr.size(i);
+
+    if (runningSum == totalSum) 
+      return "YES";
+    runningSum+= arr.size(i);
+  }
+  return "NO";
+}
+}
